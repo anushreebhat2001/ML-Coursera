@@ -64,36 +64,11 @@ def calculate_predicted_price(weights):
     y_hat = weights[-1][0] * area + weights[-1][1]
     print(y_hat)
 
-def plot_gradient_descent(weights):
-    w_history, b_history = [], []
-    for weight in weights: 
-        w_history.append(weight[0])
-        b_history.append(weight[1])
-    plt.figure()
-    plt.subplot(2, 1, 1)
-    plt.plot(range(len(w_history)), w_history, marker='o')
-    plt.xlabel('Iterations')
-    plt.ylabel('Weight (w)')
-    plt.title('Weight (w) Evolution During Gradient Descent')
-    plt.grid(True)
-
-    plt.subplot(2, 1, 2)
-    plt.plot(range(len(b_history)), b_history, marker='o')
-    plt.xlabel('Iterations')
-    plt.ylabel('Bias (b)')
-    plt.title('Bias (b) Evolution During Gradient Descent')
-    plt.grid(True)
-
-    plt.tight_layout()
-    plt.show()
-
 def main():
     df = get_data()
     m = df.shape[0]
     weights, cost_history = cost_function(df, m)
     calculate_predicted_price(weights)
-    # plot_cost_history(cost_history)
-    plot_gradient_descent(weights)
-
+# TODO: use cost_history for plots
 if __name__=="__main__":
     main()
